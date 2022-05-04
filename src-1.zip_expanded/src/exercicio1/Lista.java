@@ -15,16 +15,31 @@ public class Lista {
 
 	//esse método deverá ser implementado de acordo com o enunciado do exercício
 	private void inserirPrioridade(No aux) {
-		if(aux.cor.equals("amarelo")){
-			if(inicio.numero > aux.numero){
+		
+		No auxiliar = inicio;
+		No auxiliar2 = null, auxiliar3 = null;
+		
+		if(aux.cor.equals("amarelo")) {
+			if(inicio.cor.equalsIgnoreCase("verde")) {
 				aux.prox = inicio;
 				inicio = aux;
+			} else if (inicio == null) {
+				inicio = fim = aux; 
 			} else{
-				aux.prox = inicio.prox;
-				inicio.prox = aux;
+				while(auxiliar != null) {
+					if(auxiliar.cor.equalsIgnoreCase("verde")) {
+						auxiliar2 = auxiliar;
+						break;
+					}
+					auxiliar3 = auxiliar;
+					auxiliar = auxiliar.prox;
+				}
+				auxiliar3.prox = aux;
+				aux.prox = auxiliar2;
 			}
 		}
 	}
+	
 	
 	// método inserir. Esse método será chamado a partir da classe Main
 	public void inserir(int numero, String cor) {

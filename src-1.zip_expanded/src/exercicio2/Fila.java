@@ -19,16 +19,21 @@ public class Fila {
 	// método para desenfileirar um elemento da fila, ou seja, remover o primeiro elemento
 	public void desenfileirar() {
 		No auxiliar = inicio;
-		inicio = auxiliar.dir;	
-		inicio.esq = null;	
-		auxiliar.dir = null;
+		
+		if(inicio == null) {
+			System.out.println("Não há nenhum elemento para ser removido.");
+		} else {
+			inicio = auxiliar.dir;	
+			inicio.esq = null;	
+			auxiliar.dir = null;
+		}
 	}
 	
 	// método para exibir os dados (nome e placa) dos motoristas
 	public void mostrarDados() {
 		No auxiliar = inicio;
 		while(auxiliar != null) {
-			System.out.println(auxiliar.motorista.getNome());
+			System.out.println("{nome: " + auxiliar.motorista.getNome() + " | placa: " + auxiliar.motorista.getPlaca() + "}");
 			auxiliar = auxiliar.dir;
 		}
 	}

@@ -20,27 +20,13 @@ public class Main {
 	}
 	
 	public static void inverter(Lista lista) {
-		No aux = lista.inicio;
-		No inverter;
+		No aux = lista.fim;
+		No inverter = aux;
 		
 		while(aux != null) {
-			if(aux == lista.inicio) {
-				aux.esq = aux.dir;
-				aux.dir = null;
-				aux = aux.esq;
-			} else if(aux == lista.fim) {
-				aux.dir = aux.esq;
-				aux.esq = null;
-				break;
-			} else {
-				inverter = aux.esq;
-				aux.esq = aux.dir;
-				aux.dir = inverter;
-				aux = aux.esq;
-			}
+			aux.dir = aux.esq;
+			aux = aux.esq;
 		}
-		inverter = lista.inicio;
-		lista.inicio = lista.fim;
-		lista.fim = inverter;
+		lista.inicio = inverter;
 	}
 }
